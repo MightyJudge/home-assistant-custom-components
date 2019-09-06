@@ -19,7 +19,8 @@ async def async_setup_platform(hass, config, async_add_entities,
 
     for featureset_id, name in link.get_climates():
         climates.append(LWRF2Climate(name, featureset_id, link))
-    async_add_entities(climates)
+    if len(climates) > 0:
+        async_add_entities(climates)
 
 
 class LWRF2Climate(ClimateDevice):
